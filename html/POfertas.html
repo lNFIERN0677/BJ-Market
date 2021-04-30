@@ -7,14 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <script src="../js/bootstrap.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet" />
+
     <title>Ofertas</title>
 </head>
 
-<body>
+<body onload="Mostrar()">
     <nav class="navbar navbar-expand-lg bg-dark bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../html/Pprincipal.html">JB-Market</a>
+            <a class="navbar-brand" href="../html/../index.html.html">JB-Market</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,39 +25,44 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Pprincipal.html">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="POfertas.html">Ofertas</a>
+                        <a class="nav-link" href="POfertas.html" onclick="noentar()">Ofertas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="PCategorias.html">Categorias</a>
+                        <a class="nav-link" href="PCategorias.html" onclick="noentar()">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="PCatalogo.html">Catalogo</a>
+                        <a class="nav-link" href="PCatalogo.html" onclick="noentar()">Catalogo</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="PContacto.html" id="navbarDropdownMenuLink"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Contacto
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Otras
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a class="dropdown-item" href="PContacto.html">Contactenos</a>
+                                <a class="dropdown-item" href="PContacto.html" onclick="noentar()">Contactenos</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="PTrabaja_Con_Nosotros.html">Trabaja con nosotros</a>
+                                <a class="dropdown-item" href="PTrabaja_Con_Nosotros.html" onclick="noentar()">Trabaja
+                                    con nosotros</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="PSucursales.html">Sucursales</a>
+                                <a class="dropdown-item" href="PSucursales.html" onclick="noentar()">Sucursales</a>
                             </li>
-                            
+                            <li>
+                                <a class="dropdown-item" id="cerrarw" href="#" onclick="return cerrar()">Cerrar
+                                    sesion</a>
+                            </li>
+
                         </ul>
                     </li>
                 </ul>
                 <li class="nav-item position-absolute bottom-0 end-0">
-                    <a class="nav-link" href="#" onclick="return cerrar()">
-                        <p class="name" id="dato_usuario"></p>
+                    <a class="nav-link">
+                        <p class="name text-white" id="dato_usuario"></p>
                     </a>
                 </li>
             </div>
@@ -198,12 +206,29 @@
                     obtienes hasta 0.02% de tu compra.
                 </p>
                 <br />
-                <img src="../img/oferta.png" class="img-fluid" /><br><br>
+                <img src="../img/oferta.png" class="img-fluid rounded mx-auto d-block" /><br><br>
             </section>
 
             <div class="col-lg-5">
+                <br><br>
+                <div class="row" style="border-radius: 20px ; background-color: antiquewhite;">
+                    <span class="text-center">Fundation MyDog</span>
+                    <hr>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div id="form-control">
+                                <input type="button" value="Conocer" class="btn btn-primary my-1" onclick="dolar()">
+                                <a href="./Dontacion.html"><input type="button" value="Donar"
+                                        class="btn btn-info my-3"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8" id="imgRandom"></div>
+
+                </div>
+
                 <br /><br />
-                <h1>Calculadora:</h1>
+                <h1>Calcula tu descuento:</h1>
                 <br /><br />
                 <div class="row">
                     <div class="col-lg-3">
@@ -212,25 +237,25 @@
                     </div>
                     <div class="col-lg-9">
                         <form id="miForm" action="" name="fomulario_inp">
-                            <label for="txt_prod" class="form-label">Numero 1 :</label>
+                            <label for="txt_prod" class="form-label">Valor Producto :</label>
                             <input type="text" id="txtnume1" class="form-control" />
-                            <label for="txtcant" class="form-label">Numero 2 :</label>
+                            <label for="txtcant" class="form-label">% Descuento :</label>
                             <input type="hidden" placeholder="" id="member_id" name=member_id>
                             <input type="text" id="txtnume2" class="form-control" /><br />
-                            <input type="radio" name="op[]" class="form-check-input" id="suma" />
+                            <!-- <input type="radio" name="op[]" class="form-check-input" id="suma" />
                             Suma <br />
                             <input type="radio" name="op[]" class="form-check-input" id="resta" />
                             Resta <br />
                             <input type="radio" name="op[]" class="form-check-input" id="multiplicacion" />
                             Multiplicacion <br />
                             <input type="radio" name="op[]" class="form-check-input" id="division" />
-                            division <br /><br />
+                            division <br /><br /> -->
 
                             <div class="text-center">
                                 <input type="button" class="btn btn-primary" value="Enviar" id="btnagregar"
                                     onclick="procesar()" />
-                                <input type="button" class="btn btn-danger" value="Actualizar" id="btneditar"
-                                    onclick="actualizarfila()" />
+                                <input type="button" class="btn btn-warning text-white" value="Actualizar"
+                                    id="btneditar" onclick="actualizarfila()" />
                             </div>
                         </form>
                     </div>
@@ -239,7 +264,7 @@
                 <div class="row table-responsive">
                     <h1>Registros:</h1>
                     <div id="res">
-                        <table id="tbPorcentaje" border="4" class="table table-striped">
+                        <table id="tbPorcentaje" border="4" class="table table-striped text-center">
                             <tr>
                                 <th>ID</th>
                                 <th>Numero 1</th>
@@ -253,36 +278,45 @@
                         <!---Aqui va la tabla-->
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row bg-dark">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-9 col-12">
-                <spam style="color: white">Publicado por Bryan Villanueva & Jose Castrillon <br />
-                    ©JCastrillon - BVillanueva - <br />Direccion: kra 29A 80b 10<br />Todos
-                    los derechos reservados <br />
-                    Se han bienvenidos a nuestra pag web espero y les guste :)
-                </spam>
+
+
 
             </div>
-            <div class="col-lg-2 col-12 align-self-center">
+
+
+
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="container-fluid">
+        <div class="row bg-dark">
+            <div class="col-lg-1 col-1"></div>
+            <div class="col-lg col col-sm col-md col-xl">
+                <p style="color: white"><br> Publicado por Bryan Villanueva y Jose Castrillon <br> ©JCastrillon -
+                    BVillanueva
+                    <br>
+                    Direccion: kra 29A 80b 10 <br> Todos
+                    los derechos reservados <br>
+                    Se han bienvenidos a nuestra pag web espero y les guste
+                </p>
+
+            </div>
+            <div class="col-lg col col-sm col-md col-xl align-self-center">
                 <br>
                 <div class="row">
-                    <div class="col-lg-3 col-3">
+                    <div class="col-lg col col-sm col-md col-xl">
                         <a href="https://es-la.facebook.com/">
                             <img src="../img/fb.png" alt="" class="img-fluid w-75" /></a>
                     </div>
-                    <div class="col-lg-3  col-3">
+                    <div class="col-lg col col-sm col-md col-xl">
                         <a href="https://twitter.com/?lang=es">
                             <img src="../img/tw.png" alt="" class="img-fluid w-75" /></a>
                     </div>
-                    <div class="col-lg-3  col-3">
+                    <div class="col-lg col col-sm col-md col-xl">
                         <a href="mailto:jmcastrillon@itsa.edu.co">
                             <img src="../img/gm.png" alt="" class="img-fluid w-75" /></a>
                     </div>
-                    <div class="col-lg-3  col-3">
+                    <div class="col-lg col col-sm col-md col-xl">
                         <a href="https://www.instagram.com/?hl=es">
                             <img src="../img/insta.png" alt="" class="img-fluid w-75" /></a>
                     </div>
@@ -291,6 +325,7 @@
         </div>
     </div>
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../Js/inserDiv.js"></script>
 <script src="../Js/oferta.js"></script>
 
